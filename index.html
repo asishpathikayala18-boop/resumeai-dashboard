@@ -22,11 +22,11 @@
 
       <div class="score-pill" aria-label="ATS score 78 out of 100">
         <span>ATS</span>
-        <strong>78/100</strong>
+        <strong id="header-score">78/100</strong>
       </div>
 
       <button class="primary-action" type="button" data-view="upload">+ New Analysis</button>
-      <button class="avatar" type="button" data-view="account" aria-label="Open account">AK</button>
+      <button class="avatar" type="button" data-view="account" aria-label="Open account" id="client-avatar">RA</button>
       <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
@@ -44,7 +44,7 @@
         <button class="nav-button" type="button" data-view="career">Career Path</button>
         <p>Account</p>
         <button class="nav-button" type="button" data-view="history">History</button>
-        <button class="nav-button" type="button" data-view="admin">Admin</button>
+        <button class="nav-button" type="button" data-view="admin">System</button>
       </nav>
     </aside>
 
@@ -222,7 +222,7 @@
         <div class="letter-preview">
           <p>Dear Hiring Manager,</p>
           <p>I am excited to apply for the Software Engineer role. My work across React, FastAPI, and data-backed resume analysis aligns well with your team's product needs.</p>
-          <p>Sincerely,<br>Ananya Kumar</p>
+          <p>Sincerely,<br><span id="cover-letter-name">ResumeAI User</span></p>
         </div>
       </section>
 
@@ -239,13 +239,13 @@
       <section class="view" id="history" aria-labelledby="history-title">
         <h1 id="history-title">History</h1>
         <div class="history-list">
-          <article><strong>software_engineer_resume_v3.pdf</strong><span>78/100 - Today</span></article>
-          <article><strong>internship_resume_v2.pdf</strong><span>69/100 - Yesterday</span></article>
+          <article><strong id="latest-history-file">No uploaded resume yet</strong><span id="latest-history-score">Upload to analyze</span></article>
+          <article><strong>Demo resume sample</strong><span>Example only</span></article>
         </div>
       </section>
 
       <section class="view" id="admin" aria-labelledby="admin-title">
-        <h1 id="admin-title">Admin</h1>
+        <h1 id="admin-title">System</h1>
         <div class="architecture">
           <h2>System Architecture</h2>
           <div class="arch-grid">
@@ -257,8 +257,8 @@
       <section class="view" id="account" aria-labelledby="account-title">
         <h1 id="account-title">Account</h1>
         <div class="panel compact">
-          <h2>Ananya Kumar</h2>
-          <p>Plan: Pro - Saved analyses: 12 - Preferred role: Software Engineer</p>
+          <h2 id="account-name">ResumeAI User</h2>
+          <p id="account-summary">Upload a resume to personalize this dashboard.</p>
         </div>
       </section>
     </main>

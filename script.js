@@ -91,6 +91,32 @@ function createChip(text, className) {
   return chip;
 }
 
+function getDisplayName(fileName) {
+  const baseName = (fileName || "ResumeAI User")
+    .replace(/\.[^.]+$/, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\b(resume|cv|final|updated|latest|pdf|docx|doc)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!baseName) return "ResumeAI User";
+
+  return baseName
+    .split(" ")
+    .slice(0, 3)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function getInitials(name) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("") || "RA";
+}
+
 function renderResumeAnalysis(analysis) {
   if (!analysis) return;
 
@@ -98,10 +124,18 @@ function renderResumeAnalysis(analysis) {
   const matched = analysis.matchedKeywords || [];
   const missing = analysis.missingKeywords || [];
   const suggestions = analysis.suggestions || [];
+  const displayName = getDisplayName(analysis.fileName);
 
   document.querySelector(".score-ring")?.style.setProperty("--score", analysis.atsScore);
   setText(".score-ring span", analysis.atsScore);
+  setText("#header-score", `${analysis.atsScore}/100`);
   setText("#analysis-subtitle", `${analysis.fileName} - analyzed just now`);
+  setText("#client-avatar", getInitials(displayName));
+  setText("#account-name", displayName);
+  setText("#account-summary", `Latest resume: ${analysis.fileName} - ATS ${analysis.atsScore}/100`);
+  setText("#cover-letter-name", displayName);
+  setText("#latest-history-file", analysis.fileName);
+  setText("#latest-history-score", `${analysis.atsScore}/100 - Just now`);
   setText("#score-label", analysis.grade);
   setText("#score-summary", analysis.summary);
   setText("#metric-structure", `${metrics.structure || 0}%`);
