@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f0">
+  <title>ResumeAI Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar" aria-label="Application header">
+      <button class="brand" type="button" data-view="dashboard" aria-label="Open dashboard">
+        <span class="brand-mark">R</span>
+        <span>ResumeAI</span>
+      </button>
+
+      <label class="search-wrap">
+        <span class="visually-hidden">Search analyses</span>
+        <input type="search" placeholder="Search analyses, resumes, cover letters...">
+      </label>
+
+      <div class="score-pill" aria-label="ATS score 78 out of 100">
+        <span>ATS</span>
+        <strong>78/100</strong>
+      </div>
+
+      <button class="primary-action" type="button" data-view="upload">+ New Analysis</button>
+      <button class="avatar" type="button" data-view="account" aria-label="Open account">AK</button>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </header>
+
+    <aside class="sidebar" aria-label="Main navigation">
+      <nav>
+        <p>Main</p>
+        <button class="nav-button active" type="button" data-view="dashboard">Dashboard</button>
+        <button class="nav-button" type="button" data-view="upload">Upload Resume</button>
+        <button class="nav-button" type="button" data-view="ats">ATS Analyzer</button>
+        <button class="nav-button" type="button" data-view="matcher">JD Matcher</button>
+        <p>AI Tools</p>
+        <button class="nav-button" type="button" data-view="reviewer">AI Reviewer</button>
+        <button class="nav-button" type="button" data-view="interview">Interview Prep</button>
+        <button class="nav-button" type="button" data-view="cover">Cover Letter</button>
+        <button class="nav-button" type="button" data-view="career">Career Path</button>
+        <p>Account</p>
+        <button class="nav-button" type="button" data-view="history">History</button>
+        <button class="nav-button" type="button" data-view="admin">Admin</button>
+      </nav>
+    </aside>
+
+    <main class="content" id="main-content">
+      <section class="view active" id="dashboard" aria-labelledby="dashboard-title">
+        <div class="page-head">
+          <div>
+            <h1 id="dashboard-title">Resume Analysis Dashboard</h1>
+            <p id="analysis-subtitle">Upload a resume to generate a personalized analysis.</p>
+          </div>
+          <button class="outline-action" type="button" data-view="reviewer">Full AI Review</button>
+        </div>
+
+        <div class="hero-panel">
+          <div class="score-ring" style="--score: 78">
+            <span>78</span>
+            <small>/100</small>
+          </div>
+          <div class="hero-copy">
+            <h2 id="score-label">Good Score</h2>
+            <p id="score-summary">Your resume has strong foundations. Focus on keyword optimization and measurable project descriptions to reach 90+.</p>
+            <div class="mini-metrics" aria-label="Resume metric summary">
+              <span><strong id="metric-structure">92%</strong>Structure</span>
+              <span><strong id="metric-keywords">64%</strong>Keywords</span>
+              <span><strong id="metric-readability">88%</strong>Readability</span>
+              <span><strong id="metric-skills">71%</strong>Skills</span>
+              <span><strong id="metric-contact">95%</strong>Contact Info</span>
+            </div>
+          </div>
+          <div class="orbital" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <b>AI</b>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <article><span>Keywords Matched</span><strong id="keywords-matched">34/47</strong></article>
+          <article><span>Missing Skills</span><strong id="missing-skills-count">8</strong></article>
+          <article><span>JD Match Score</span><strong id="jd-match-score">72%</strong></article>
+          <article><span>Action Verbs Used</span><strong id="action-verbs-score">12/20</strong></article>
+        </div>
+
+        <div class="split-grid">
+          <section class="panel">
+            <h2>ATS Score Breakdown</h2>
+            <div class="bar-row"><span>Resume Structure</span><b><i id="bar-structure" style="width:92%"></i></b><strong id="bar-structure-score">92</strong></div>
+            <div class="bar-row"><span>Keyword Density</span><b><i id="bar-keywords" class="warn" style="width:64%"></i></b><strong id="bar-keywords-score">64</strong></div>
+            <div class="bar-row"><span>Formatting</span><b><i id="bar-formatting" style="width:85%"></i></b><strong id="bar-formatting-score">85</strong></div>
+            <div class="bar-row"><span>Skill Relevance</span><b><i id="bar-skills" class="warn" style="width:71%"></i></b><strong id="bar-skills-score">71</strong></div>
+            <div class="bar-row"><span>Project Quality</span><b><i id="bar-project" class="warn" style="width:68%"></i></b><strong id="bar-project-score">68</strong></div>
+            <div class="bar-row"><span>Contact Info</span><b><i id="bar-contact" style="width:95%"></i></b><strong id="bar-contact-score">95</strong></div>
+          </section>
+
+          <section class="panel">
+            <div class="tabs" role="tablist" aria-label="Keyword tabs">
+              <button class="tab active" type="button">Missing Keywords</button>
+              <button class="tab" type="button">Present</button>
+            </div>
+            <div class="chips" id="keyword-chips">
+              <span class="missing">Docker</span>
+              <span class="missing">Kubernetes</span>
+              <span class="missing">CI/CD</span>
+              <span class="missing">System Design</span>
+              <span class="missing">GraphQL</span>
+              <span class="missing">Redis</span>
+              <span class="present">Python</span>
+              <span class="present">React</span>
+              <span class="present">REST API</span>
+              <span class="present">PostgreSQL</span>
+              <span class="present">Git</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="suggestions">
+          <h2>AI Improvement Suggestions</h2>
+          <div id="suggestion-list">
+            <article><b>Quantify project impact</b> Replace vague project lines with measurable outcomes such as users served, time saved, or revenue protected.</article>
+            <article><b>Add DevOps keywords</b> Include Docker, CI/CD, and Kubernetes in skills and project descriptions where they are truthful.</article>
+            <article><b>Strengthen summary</b> Add target role, years of practice, and one standout technical achievement.</article>
+          </div>
+        </section>
+
+        <div class="quick-actions">
+          <button type="button" data-view="cover">Generate Cover Letter</button>
+          <button type="button" data-view="interview">Interview Prep</button>
+          <button type="button" data-view="career">Career Roadmap</button>
+          <button type="button" data-view="matcher">Match to JD</button>
+        </div>
+      </section>
+
+      <section class="view" id="upload" aria-labelledby="upload-title">
+        <div class="tool-layout">
+          <div>
+            <h1 id="upload-title">Upload Resume</h1>
+            <p>Start a new analysis by adding a PDF or DOCX resume. The clean upload flow is optimized for mobile and desktop.</p>
+            <div class="drop-zone" id="drop-zone">
+              <strong>Drop resume here</strong>
+              <span>PDF or DOCX - max 10 MB</span>
+              <input id="resume-file" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              <button type="button" id="choose-file">Choose File</button>
+              <p class="upload-status" id="upload-status" role="status">No file selected</p>
+            </div>
+            <section class="panel upload-result" id="upload-result" hidden>
+              <h2>Resume-Specific Result</h2>
+              <p id="upload-result-summary"></p>
+              <div class="chips" id="upload-result-keywords"></div>
+              <button class="primary-action standalone" type="button" data-view="dashboard">View Dashboard</button>
+            </section>
+          </div>
+          <div class="panel compact">
+            <h2>Analysis Pipeline</h2>
+            <ol class="steps">
+              <li>Parse contact, skills, and project sections</li>
+              <li>Score ATS readiness and formatting</li>
+              <li>Generate role-specific improvements</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="ats" aria-labelledby="ats-title">
+        <div class="tool-layout">
+          <div>
+            <h1 id="ats-title">ATS Analyzer</h1>
+            <p>Review structure, keyword density, formatting risk, and recruiter readability without leaving this page.</p>
+            <div class="metric-grid tight">
+              <article><span>Structure</span><strong>92</strong></article>
+              <article><span>Formatting</span><strong>85</strong></article>
+              <article><span>Readability</span><strong>88</strong></article>
+            </div>
+          </div>
+          <div class="panel compact">
+            <h2>Priority Fixes</h2>
+            <p>Move technical keywords into project bullets and keep section labels simple for parser compatibility.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="matcher" aria-labelledby="matcher-title">
+        <div class="tool-layout">
+          <div>
+            <h1 id="matcher-title">JD Matcher</h1>
+            <p>Paste a job description to compare skills, responsibilities, and seniority signals.</p>
+            <textarea placeholder="Paste job description here"></textarea>
+            <button class="primary-action standalone" type="button">Run Match</button>
+          </div>
+          <div class="panel compact">
+            <h2>Current Match</h2>
+            <strong class="large-number">72%</strong>
+            <p>Best aligned with frontend platform and full-stack software engineer roles.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="reviewer" aria-labelledby="reviewer-title">
+        <h1 id="reviewer-title">AI Reviewer</h1>
+        <div class="suggestions focused">
+          <article><b>Rewrite weak bullet</b> Built a dashboard to Built a resume analytics dashboard serving 500+ monthly users with 40% faster report generation.</article>
+          <article><b>Improve skills order</b> Put strongest role-matching tools first: React, Python, FastAPI, PostgreSQL, Docker.</article>
+        </div>
+      </section>
+
+      <section class="view" id="interview" aria-labelledby="interview-title">
+        <h1 id="interview-title">Interview Prep</h1>
+        <div class="question-list">
+          <button type="button">Explain your resume parser architecture.</button>
+          <button type="button">How would you improve ATS scoring accuracy?</button>
+          <button type="button">Describe a time you optimized performance.</button>
+        </div>
+      </section>
+
+      <section class="view" id="cover" aria-labelledby="cover-title">
+        <h1 id="cover-title">Cover Letter</h1>
+        <div class="letter-preview">
+          <p>Dear Hiring Manager,</p>
+          <p>I am excited to apply for the Software Engineer role. My work across React, FastAPI, and data-backed resume analysis aligns well with your team's product needs.</p>
+          <p>Sincerely,<br>Ananya Kumar</p>
+        </div>
+      </section>
+
+      <section class="view" id="career" aria-labelledby="career-title">
+        <h1 id="career-title">Career Path</h1>
+        <div class="roadmap">
+          <span>Frontend Engineer</span>
+          <span>Full-Stack Engineer</span>
+          <span>Platform Engineer</span>
+          <span>Technical Lead</span>
+        </div>
+      </section>
+
+      <section class="view" id="history" aria-labelledby="history-title">
+        <h1 id="history-title">History</h1>
+        <div class="history-list">
+          <article><strong>software_engineer_resume_v3.pdf</strong><span>78/100 - Today</span></article>
+          <article><strong>internship_resume_v2.pdf</strong><span>69/100 - Yesterday</span></article>
+        </div>
+      </section>
+
+      <section class="view" id="admin" aria-labelledby="admin-title">
+        <h1 id="admin-title">Admin</h1>
+        <div class="architecture">
+          <h2>System Architecture</h2>
+          <div class="arch-grid">
+            <span>Next.js App</span><span>FastAPI Gateway</span><span>ATS Engine</span><span>AI Prompt Engine</span><span>PostgreSQL</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="account" aria-labelledby="account-title">
+        <h1 id="account-title">Account</h1>
+        <div class="panel compact">
+          <h2>Ananya Kumar</h2>
+          <p>Plan: Pro - Saved analyses: 12 - Preferred role: Software Engineer</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

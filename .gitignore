@@ -1,0 +1,9 @@
+Thumbs.db
+desktop.ini
+.DS_Store
+.env
+.env.local
+node_modules/
+dist/
+build/
+uploads/
