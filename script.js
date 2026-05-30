@@ -209,9 +209,16 @@ async function uploadResumeFile(file) {
       method: "POST",
       body: formData,
     });
-    const result = await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    const result = contentType.includes("application/json")
+      ? await response.json()
+      : { error: await response.text() };
 
     if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Upload server not found. On Render, deploy this project as a Web Service, not a Static Site.");
+      }
+
       throw new Error(result.error || "Upload failed. Please try again.");
     }
 
